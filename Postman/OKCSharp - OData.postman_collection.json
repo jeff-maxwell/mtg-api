@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "1549b2b2-0d0e-4995-98e7-ffc777040495",
+		"name": "OKCSharp - OData",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cards - WebAPI GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - SELECT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - ORDERBY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text&$orderby=artist",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						},
+						{
+							"key": "$orderby",
+							"value": "artist"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - FILTER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text&$orderby=artist&$filter=rarity eq 'Uncommon'",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						},
+						{
+							"key": "$orderby",
+							"value": "artist"
+						},
+						{
+							"key": "$filter",
+							"value": "rarity eq 'Uncommon'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - TOP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text&$orderby=name&$top=3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						},
+						{
+							"key": "$orderby",
+							"value": "name"
+						},
+						{
+							"key": "$top",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - SKIP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text&$orderby=name&$top=3&$skip=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						},
+						{
+							"key": "$orderby",
+							"value": "name"
+						},
+						{
+							"key": "$top",
+							"value": "3"
+						},
+						{
+							"key": "$skip",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - EXPAND",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text&$expand=ArtistInfo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						},
+						{
+							"key": "$expand",
+							"value": "ArtistInfo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cards - WebAPI GET - EXPAND SELECT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/cards?$select=name,type,artist,text&$expand=ArtistInfo($select=name)",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "name,type,artist,text"
+						},
+						{
+							"key": "$expand",
+							"value": "ArtistInfo($select=name)"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

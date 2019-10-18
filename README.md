@@ -25,13 +25,12 @@ app.UseMvc(routeBuilder =>
     // Enable Dependency Injection in MVC Route Builder so you can add OData
     routeBuilder.EnableDependencyInjection();
     // Tell the Route Builder what OData features you want to Enable.
-    routeBuilder.Select()     // Allows limiting what fields are returned
-                .Count()      // Returns the Count of how many records are returned
-                .Expand()     // Will load related Objects/Data
-                .OrderBy()    // Will allow ordering the data returned by one or more fileds
-                .SkipToken()  // Allows Paging of data
-                .MaxTop(10)   // Sets the Maximum number of records to return by default
-                .Filter();    // Allows search filtering on the data.
+    routeBuilder.Select()      // Allows limiting what fields are returned
+                .OrderBy()     // Will allow ordering the data returned by one or more fileds
+                .Filter()      // Allows search filtering on the data.
+                .SkipToken()   // Allows Paging of data
+                .MaxTop(4)    // Sets the Maximum number of records to return by default
+                .Expand();     // Will load related Objects/Data
 });
 ```
 3. For each API verb (GET, POST, PUT, DELETE...) that you want OData available you have to modify that controller and add the [EnableQuery()] attribute:

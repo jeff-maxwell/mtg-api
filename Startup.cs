@@ -57,12 +57,11 @@ namespace mtg_api
       { 
         routeBuilder.EnableDependencyInjection();
         routeBuilder.Select()
-                    .Count()
-                    .Expand()
                     .OrderBy()
+                    .Filter()
                     .SkipToken()
-                    .MaxTop(10)
-                    .Filter();
+                    .MaxTop(4)
+                    .Expand();
       });
     }
 
@@ -130,6 +129,20 @@ namespace mtg_api
           CollectionNumber = 161,
           Text = "Lightning Bolt does 3 damage to one target.",
           Rarity = CardRarity.Common.ToString(),
+          Type = CardType.Instant.ToString(),
+          Artist = "Christopher Rush",
+          ArtistInfo = db.Artists.Find("444")
+        }
+        );
+
+        db.Cards.Add(new Card
+        {
+          Name = "Lightning Bolt - With Extra Electricity",
+          SetName = "Limited Edition Alpha",
+          SetCode = "LEA",
+          CollectionNumber = 162,
+          Text = "Lightning Bolt does 30 damage to one target.",
+          Rarity = CardRarity.Mythic.ToString(),
           Type = CardType.Instant.ToString(),
           Artist = "Christopher Rush",
           ArtistInfo = db.Artists.Find("444")
