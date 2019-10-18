@@ -33,6 +33,7 @@ namespace mtg_api
       services.AddDbContext<CardContext>(options =>
         options.UseInMemoryDatabase("CardDb")
       );
+      // Add the OData Service
       services.AddOData();
     }
 
@@ -51,6 +52,7 @@ namespace mtg_api
       }
 
       app.UseHttpsRedirection();
+      //app.UseMvc();
       app.UseMvc(routeBuilder => 
       { 
         routeBuilder.EnableDependencyInjection();
