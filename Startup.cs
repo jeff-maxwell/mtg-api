@@ -60,6 +60,8 @@ namespace mtg_api
                     .Count()
                     .Expand()
                     .OrderBy()
+                    .SkipToken()
+                    .MaxTop(10)
                     .Filter();
       });
     }
