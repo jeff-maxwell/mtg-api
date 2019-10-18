@@ -9,45 +9,40 @@ namespace mtg_api.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class CardsController : ControllerBase
+  public class ArtistsController : ControllerBase
   {
     private readonly CardContext _context;
-    public CardsController(CardContext context)
+    public ArtistsController(CardContext context)
     {
       _context = context;
     }
 
     [HttpGet]
     [EnableQuery()]
-    public ActionResult<IEnumerable<Card>> Get()
+    public ActionResult<IEnumerable<Artist>> Get()
     {
-      return Ok(_context.Cards);
+      return Ok(_context.Artists);
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Card> Get(string id)
+    public ActionResult<Artist> Get(string id)
     {
-      var card = _context.Cards.SingleOrDefault(c =>
-        (c.SetCode + c.CollectionNumber).ToUpper() == id.ToUpper()
-      );
+      var artist = _context.Artists.Find(id);
 
-      if (card == null)
+      if (artist == null)
       {
         return NotFound();
       }
       else
       {
-        return Ok(card);
+        return Ok(artist);
       }
     }
 
     [HttpPost]
-    public ActionResult Post([FromBody] Card card)
+    public ActionResult Post([FromBody] Artist artist)
     {
-      var id = (card.SetCode + card.CollectionNumber).ToUpper();
-      var found = _context.Cards.SingleOrDefault(c =>
-        (c.SetCode + c.CollectionNumber).ToUpper() == id
-      );
+      var found = _context.Artists.Find(artist.Id);
 
       if (found != null)
       {
@@ -55,14 +50,14 @@ namespace mtg_api.Controllers
       }
       else
       {
-        _context.Cards.Add(card);
+        _context.Artists.Add(artist);
         _context.SaveChanges();
       }
       return Ok("Card added!");
     }
 
     [HttpPut("{id}")]
-    public ActionResult Put(string id, [FromBody] Card card)
+    public ActionResult Put(string id, [FromBody] Artist artist)
     {
       return Ok();
     }

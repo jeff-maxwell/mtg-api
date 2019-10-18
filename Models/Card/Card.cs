@@ -19,5 +19,6 @@ namespace mtg_api.Models
     public string Artist { get; set; }
     public string ImageUrl { get; set; }
     public bool Foil { get; set; }
+    public Artist ArtistInfo { get; set; }
   }
 }

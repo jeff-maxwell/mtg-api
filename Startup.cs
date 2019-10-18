@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace mtg_api
       services.AddDbContext<CardContext>(options =>
         options.UseInMemoryDatabase("CardDb")
       );
+      services.AddOData();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +51,15 @@ namespace mtg_api
       }
 
       app.UseHttpsRedirection();
-      app.UseMvc();
+      app.UseMvc(routeBuilder => 
+      { 
+        routeBuilder.EnableDependencyInjection();
+        routeBuilder.Select()
+                    .Count()
+                    .Expand()
+                    .OrderBy()
+                    .Filter();
+      });
     }
 
     private void Initialize(IServiceProvider service)
@@ -58,6 +68,12 @@ namespace mtg_api
       {
         var scopeServiceProvider = scope.ServiceProvider;
         var db = scopeServiceProvider.GetService<CardContext>();
+
+        db.Artists.Add(new Artist { Id = "111", Name = "Mark Poole", Email = "mark@poole.com", Phone = "405-555-1212" });
+        db.Artists.Add(new Artist { Id = "222", Name = "Sandra Everingham", Email = "Sandra@Everingham.com", Phone = "405-555-1212" });
+        db.Artists.Add(new Artist { Id = "333", Name = "Douglas Schuler", Email = "Douglas@Schuler.com", Phone = "405-555-1212" });
+        db.Artists.Add(new Artist { Id = "444", Name = "Christopher Rush", Email = "Christopher@Rush.com", Phone = "405-555-1212" });
+        db.Artists.Add(new Artist { Id = "555", Name = "Anson Maddocks", Email = "Anson@Maddocks.com", Phone = "405-555-1212" });
 
         db.Cards.Add(new Card
         {
@@ -69,7 +85,8 @@ namespace mtg_api
           FlavorText = "Nope.",
           Rarity = CardRarity.Uncommon.ToString(),
           Type = CardType.Instant.ToString(),
-          Artist = "Mark Poole"
+          Artist = "Mark Poole",
+          ArtistInfo = db.Artists.Find("111")
         }
         );
 
@@ -82,7 +99,8 @@ namespace mtg_api
           Text = "Add 3 black mana to your mana pool.",
           Rarity = CardRarity.Common.ToString(),
           Type = CardType.Instant.ToString(),
-          Artist = "Sandra Everingham"
+          Artist = "Sandra Everingham",
+          ArtistInfo = db.Artists.Find("111")
         }
         );
 
@@ -95,7 +113,8 @@ namespace mtg_api
           Text = "You may search your library for one card and take it into your hand. Reshuffle your library afterwards.",
           Rarity = CardRarity.Uncommon.ToString(),
           Type = CardType.Sorcery.ToString(),
-          Artist = "Douglas Schuler"
+          Artist = "Douglas Schuler",
+          ArtistInfo = db.Artists.Find("333")
         }
         );
 
@@ -108,7 +127,8 @@ namespace mtg_api
           Text = "Lightning Bolt does 3 damage to one target.",
           Rarity = CardRarity.Common.ToString(),
           Type = CardType.Instant.ToString(),
-          Artist = "Christopher Rush"
+          Artist = "Christopher Rush",
+          ArtistInfo = db.Artists.Find("444")
         }
         );
 
@@ -124,7 +144,8 @@ namespace mtg_api
           Type = CardType.Creature.ToString(),
           Power = 1,
           Toughness = 1,
-          Artist = "Anson Maddocks"
+          Artist = "Anson Maddocks",
+          ArtistInfo = db.Artists.Find("555")
         }
         );
 
