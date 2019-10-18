@@ -1,7 +1,11 @@
 # Adding OData to existing .NET Core WebAPI
-Code for the .NET Core API talk for OKC C# user group talk.
+Code for the .NET Core API lightning talk for OKC C# user group talk I gave on November 4th, 2019.
 
-This talk uses the very nice starting example project/talk done by Jack Kinsey which he gave in August 2019.
+This talk uses the very nice starting example project/talk done by Jack Kinsey which he gave in August 2019 about how to build a .NET Core Web API.
+
+#Original Talk by Jack Kinsey: 
+[Github](https://github.com/jackwkinsey/mtg-api)
+[Youtube](https://www.youtube.com/watch?v=60dkQSY0e6g&list=PLdW0ayjzW_LAhrIp9cP5Cthirbte2-Euq&index=2)
 
 This project takes an existing .NET Core WebAPI project and adds [OData](https://www.odata.org) features to it without affecting the current API.
 
