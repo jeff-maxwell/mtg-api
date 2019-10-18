@@ -1,4 +1,4 @@
-# mtg-api
+# Adding OData to existing .NET Core WebAPI
 Code for the .NET Core API talk for OKC C# user group talk.
 
 This talk uses the very nice starting example project/talk done by Jack Kinsey which he gave in August 2019.
