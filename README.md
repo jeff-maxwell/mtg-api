@@ -3,7 +3,7 @@ Code for the .NET Core API lightning talk for OKC C# user group talk I gave on N
 
 This talk uses the very nice starting example project/talk done by Jack Kinsey which he gave in August 2019 about how to build a .NET Core Web API.
 
-**Original Talk by Jack Kinsey:** 
+**Original Talk by Jack Kinsey:**  
 [Github](https://github.com/jackwkinsey/mtg-api)  
 [Youtube](https://www.youtube.com/watch?v=60dkQSY0e6g&list=PLdW0ayjzW_LAhrIp9cP5Cthirbte2-Euq&index=2)
 
