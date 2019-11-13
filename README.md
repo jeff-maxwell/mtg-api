@@ -1,5 +1,6 @@
 # Adding OData to existing .NET Core WebAPI
 Code for the .NET Core API lightning talk for OKC C# user group talk I gave on November 4th, 2019.
+[Youtube](https://www.youtube.com/watch?v=ZuyXQjUJUgk&list=PLdW0ayjzW_LAhrIp9cP5Cthirbte2-Euq)
 
 This talk uses the very nice starting example project/talk done by Jack Kinsey which he gave in August 2019 about how to build a .NET Core Web API.
 
